@@ -2,8 +2,9 @@ addCommandAlias("ci-test", "scalafmtCheck; scalafmtSbtCheck; test")
 addCommandAlias("ci-docs", "github; project-docs/mdoc; headerCreateAll")
 
 lazy val exercises = (project in file("."))
-  .enablePlugins(ExerciseCompilerPlugin)
+  .settings(moduleName := "exercises-pureconfig")
   .settings(exercisesSettings)
+  .enablePlugins(ExerciseCompilerPlugin)
 
 lazy val `project-docs` = (project in file(".docs"))
   .aggregate(exercises)
