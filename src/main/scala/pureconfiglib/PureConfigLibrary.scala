@@ -18,14 +18,15 @@ package pureconfiglib
 
 import org.scalaexercises.definitions._
 
-/** This is the description of the library as it will appear in the Scala Exercises website.
+/** A boilerplate-free library for loading configuration files.
  *
- * @param name template
+ * @param name pureconfig
  */
 object PureConfigLibrary extends Library {
   override def owner      = "scala-exercises"
   override def repository = "exercises-pureconfig"
-  override def color      = Some("#C70039")
+
+  override def color = Some("#C70039")
 
   override def sections = List(
     LoadingConfig,
