@@ -31,14 +31,18 @@ class TypesSpec extends RefSpec with Checkers {
       Test.testSuccess(
         SupportedTypes.loadPrimitivesConfig _,
         "primitive" :: true :: 2.1d :: 1.0f :: 1 :: 100L :: 1
-          .asInstanceOf[Short] :: 'p' :: HNil))
+          .asInstanceOf[Short] :: 'p' :: HNil
+      )
+    )
   }
 
   def `load optional config` = {
     check(
       Test.testSuccess(
         SupportedTypes.loadOptionalConfig _,
-        Option("PureOption") :: None :: Option(101) :: HNil))
+        Option("PureOption") :: None :: Option(101) :: HNil
+      )
+    )
   }
 
   def `load collections config` = {
@@ -50,13 +54,16 @@ class TypesSpec extends RefSpec with Checkers {
           2 -> "E",
           3 -> "I",
           4 -> "O",
-          5 -> "U") :: HNil))
+          5 -> "U"
+        ) :: HNil
+      )
+    )
   }
 
-  def `load time config` = {
+  def `load time config` =
     check(
-      Test.testSuccess(SupportedTypes.loadTimeConfig _, 2 :: 2020 :: 29 :: 13 :: 21 :: 30 :: HNil))
-  }
+      Test.testSuccess(SupportedTypes.loadTimeConfig _, 2 :: 2020 :: 29 :: 13 :: 21 :: 30 :: HNil)
+    )
 
   def `load duration config` =
     check(Test.testSuccess(SupportedTypes.loadDurationConfig _, (20 minutes) :: HNil))
@@ -66,14 +73,17 @@ class TypesSpec extends RefSpec with Checkers {
       Test.testSuccess(
         SupportedTypes.loadPathsConfig _,
         "src/main/resources" :: "src/main/resources/application.conf" :: "https://pureconfig.github.io" :: "https://pureconfig.github.io/docs/index.html" :: HNil
-      ))
+      )
+    )
   }
 
   def `load application config` = {
-    check(Test.testSuccess(
-      SupportedTypes.loadApplicationConfig _,
-      None :: Option("present") :: None :: List[String]() :: Set[String]() :: Map[Int, String]() :: HNil
-    ))
+    check(
+      Test.testSuccess(
+        SupportedTypes.loadApplicationConfig _,
+        None :: Option("present") :: None :: List[String]() :: Set[String]() :: Map[Int, String]() :: HNil
+      )
+    )
   }
 
 }

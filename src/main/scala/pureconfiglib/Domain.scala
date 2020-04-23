@@ -37,7 +37,8 @@ object Domain {
       street: String,
       pets: List[Double],
       tenants: Map[String, TenantInfo],
-      mayBe: Option[String])
+      mayBe: Option[String]
+  )
 
   val multiExampleSource = ConfigSource.string("""
     example-a: {
@@ -58,7 +59,8 @@ object Domain {
       int: Int,
       long: Long,
       short: Short,
-      char: Char)
+      char: Char
+  )
 
   case class OptionConfig(optionA: Option[String], optionB: Option[String], optionC: Option[Int])
 
@@ -76,5 +78,6 @@ object Domain {
       collectionsConfig: Option[CollectionsConfig],
       timeConfig: Option[TimeConfig],
       durationConfig: Option[DurationConfig],
-      pathConfig: Option[PathConfig])
+      pathConfig: Option[PathConfig]
+  )
 }
