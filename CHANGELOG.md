@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.1.1](https://github.com/scala-exercises/exercises-pureconfig/tree/v0.1.1) (2020-04-23)
+
+[Full Changelog](https://github.com/scala-exercises/exercises-pureconfig/compare/v0.1.0...v0.1.1)
+
+**Merged pull requests:**
+
+- Fixes Sbt Module Name [\#8](https://github.com/scala-exercises/exercises-pureconfig/pull/8) ([juanpedromoreno](https://github.com/juanpedromoreno))
+
 ## [v0.1.0](https://github.com/scala-exercises/exercises-pureconfig/tree/v0.1.0) (2020-04-23)
 
 [Full Changelog](https://github.com/scala-exercises/exercises-pureconfig/compare/baed6879f2863e00323f56d215692e0997d4eeca...v0.1.0)
