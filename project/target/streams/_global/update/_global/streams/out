@@ -1,4 +1,0 @@
-[debug] "not up to date. inChanged = true, force = false
-[debug] Updating ProjectRef(uri("file:/Users/pau.alacron/Documents/open-source/exercises-pureconfig/project/"), "exercises-pureconfig-build")...
-[debug] Done updating ProjectRef(uri("file:/Users/pau.alacron/Documents/open-source/exercises-pureconfig/project/"), "exercises-pureconfig-build")
-[warn] There may be incompatibilities among your library dependencies; run 'evicted' to see detailed eviction warnings.

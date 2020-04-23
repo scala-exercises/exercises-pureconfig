@@ -85,7 +85,8 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
       int: Int,
       long: Long,
       short: Short,
-      char: Char): Unit = {
+      char: Char
+  ): Unit = {
     val primitivesSource = ConfigSource.string(
       "{ " +
         "string = primitive, " +
@@ -96,7 +97,8 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
         "long = 100," +
         "short = 1," +
         "char = p," +
-        " }")
+        " }"
+    )
     val primitivesConfig = primitivesSource.loadOrThrow[PrimitivesConf]
     primitivesConfig.string shouldBe string
     primitivesConfig.bool shouldBe bool
@@ -119,7 +121,8 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
   def loadOptionalConfig(
       optionA: Option[String],
       optionB: Option[String],
-      optionC: Option[Int]): Unit = {
+      optionC: Option[Int]
+  ): Unit = {
     val configSource =
       ConfigSource.string("{ optionA: PureOption, optionC: 101 }")
     val optionConfig: OptionConfig = configSource.loadOrThrow[OptionConfig]
@@ -151,7 +154,8 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
         "list: [ a, e, i, o, u ], " +
         "set: [ 1, 2, 3, 4, 5 ], " +
         "map : { 1: A, 2: E, 3: I, 4: O, 5: U} " +
-        "}")
+        "}"
+    )
     val collectionsConfig = configSource.loadOrThrow[CollectionsConfig]
     collectionsConfig.list shouldBe list
     collectionsConfig.set shouldBe set
@@ -190,19 +194,22 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
       day: Int,
       hours: Int,
       minues: Int,
-      seconds: Int): Unit = {
+      seconds: Int
+  ): Unit = {
     val configSource = ConfigSource.string(
       "{ " +
         "localDate: 2020-02-29, " +
         "localDateTime: \"2020-02-29T13:21:30\"" +
-        "}")
+        "}"
+    )
     implicit val localDateConvert     = localDateConfigConvert(DateTimeFormatter.ISO_DATE)
     implicit val localDateTimeConvert = localDateTimeConfigConvert(DateTimeFormatter.ISO_DATE_TIME)
     val timeConfig                    = configSource.loadOrThrow[TimeConfig]
     timeConfig.localDate shouldBe LocalDate.of(year, FEBRUARY, day)
     timeConfig.localDateTime shouldBe LocalDateTime.of(
       timeConfig.localDate,
-      LocalTime.of(hours, minues, seconds))
+      LocalTime.of(hours, minues, seconds)
+    )
   }
 
   /** All those duration types within the scala package `scala.concurrent.durations` also can be read in this format from config sources,
@@ -219,7 +226,8 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
       "{ " +
         "duration: Inf, " +
         "finiteDuration: 20 minutes" +
-        "}")
+        "}"
+    )
     val timeConfig = configSource.loadOrThrow[DurationConfig]
     timeConfig.duration shouldBe Duration.Inf
     timeConfig.finiteDuration shouldBe finiteDuration
@@ -240,7 +248,8 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
         "file: src/main/resources/application.conf, " +
         "url: \"https://pureconfig.github.io\", " +
         "uri: \"https://pureconfig.github.io/docs/index.html\"" +
-        "}")
+        "}"
+    )
     val pathConfig: PathConfig = configSource.loadOrThrow[PathConfig]
     pathConfig.path shouldBe java.nio.file.Paths.get(path)
     pathConfig.file shouldBe new java.io.File(file)
@@ -271,13 +280,15 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
       optionC: Option[Int],
       list: List[String],
       set: Set[String],
-      map: Map[Int, String]): Unit = {
+      map: Map[Int, String]
+  ): Unit = {
 
     val configSource = ConfigSource.string(
       "{ " +
         "optionConfig: { optionB: present }, " +
         "collectionsConfig: { list: [], set: [], map: {} }" +
-        "}")
+        "}"
+    )
     implicit val mapReader =
       genericMapReader[Int, String](catchReadError(_.toInt))
     implicit val localDateConvert           = localDateConfigConvert(DateTimeFormatter.ISO_DATE)
