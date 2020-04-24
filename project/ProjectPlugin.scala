@@ -10,19 +10,29 @@ object ProjectPlugin extends AutoPlugin {
 
   object autoImport {
 
-    val scalaExercisesV = "0.6.0-SNAPSHOT"
+    lazy val V = new {
+      val pureconfig: String          = "0.12.3"
+      val shapeless: String           = "2.3.3"
+      val scala: String               = "2.13.2"
+      val scalaExercises: String      = "0.6.0-SNAPSHOT"
+      val scalacheck: String          = "1.14.3"
+      val scalacheckShapeless: String = "1.2.5"
+      val scalatest: String           = "3.1.1"
+      val scalatestplusScheck: String = "3.1.1.1"
+    }
 
-    def dep(artifactId: String) = "org.scala-exercises" %% artifactId % scalaExercisesV
+    def dep(artifactId: String) = "org.scala-exercises" %% artifactId % V.scalaExercises
 
     lazy val exercisesSettings = Seq(
       libraryDependencies ++= Seq(
         dep("exercise-compiler"),
         dep("definitions"),
-        "com.chuusai"                %% "shapeless"                 % "2.3.3",
-        "com.github.pureconfig"      %% "pureconfig"                % "0.12.2",
-        "com.github.alexarchambault" %% "scalacheck-shapeless_1.14" % "1.2.5",
-        "org.scalatest"              %% "scalatest"                 % "3.1.1",
-        "org.scalatestplus"          %% "scalacheck-1-14"           % "3.1.1.1"
+        "com.github.pureconfig"      %% "pureconfig"                % V.pureconfig,
+        "com.chuusai"                %% "shapeless"                 % V.shapeless,
+        "org.scalatest"              %% "scalatest"                 % V.scalatest,
+        "org.scalacheck"             %% "scalacheck"                % V.scalacheck,
+        "org.scalatestplus"          %% "scalacheck-1-14"           % V.scalatestplusScheck,
+        "com.github.alexarchambault" %% "scalacheck-shapeless_1.14" % V.scalacheckShapeless
       )
     )
   }
@@ -32,7 +42,7 @@ object ProjectPlugin extends AutoPlugin {
       organization := "org.scala-exercises",
       organizationName := "47 Degrees",
       organizationHomepage := Some(url("https://47deg.com")),
-      scalaVersion := "2.13.1",
+      scalaVersion := autoImport.V.scala,
       resolvers ++= Seq(
         Resolver.sonatypeRepo("snapshots"),
         Resolver.sonatypeRepo("releases")
