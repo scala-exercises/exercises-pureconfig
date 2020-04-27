@@ -1,5 +1,14 @@
 # Changelog
 
+## [v0.1.3](https://github.com/scala-exercises/exercises-pureconfig/tree/v0.1.3) (2020-04-27)
+
+[Full Changelog](https://github.com/scala-exercises/exercises-pureconfig/compare/v0.1.2...v0.1.3)
+
+**Merged pull requests:**
+
+- Compile when Publish [\#13](https://github.com/scala-exercises/exercises-pureconfig/pull/13) ([juanpedromoreno](https://github.com/juanpedromoreno))
+- Updates Project [\#12](https://github.com/scala-exercises/exercises-pureconfig/pull/12) ([juanpedromoreno](https://github.com/juanpedromoreno))
+
 ## [v0.1.2](https://github.com/scala-exercises/exercises-pureconfig/tree/v0.1.2) (2020-04-23)
 
 [Full Changelog](https://github.com/scala-exercises/exercises-pureconfig/compare/v0.1.1...v0.1.2)
