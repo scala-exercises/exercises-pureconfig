@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 47 Degrees <https://47deg.com>
+ * Copyright 2020 47 Degrees Open Source <https://www.47deg.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,8 @@ package pureconfiglib
 
 import org.scalaexercises.definitions._
 
-/** A boilerplate-free library for loading configuration files.
+/**
+ * A boilerplate-free library for loading configuration files.
  *
  * @param name pureconfig
  */
@@ -28,10 +29,11 @@ object PureConfigLibrary extends Library {
 
   override def color = Some("#C70039")
 
-  override def sections = List(
-    LoadingConfig,
-    SupportedTypes
-  )
+  override def sections =
+    List(
+      LoadingConfig,
+      SupportedTypes
+    )
 
   override def logoPath = "pureconfig"
 }

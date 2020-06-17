@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 47 Degrees <https://47deg.com>
+ * Copyright 2020 47 Degrees Open Source <https://www.47deg.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,7 +42,8 @@ import pureconfig.generic.auto._
 import scala.language.postfixOps
 import scala.concurrent.duration._
 
-/** @param name Supported Types
+/**
+ * @param name Supported Types
  */
 object SupportedTypes extends AnyFlatSpec with Matchers with Section {
 
@@ -74,9 +75,7 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
    * {{{
    * case class PrimitivesConf(string: String, bool: Boolean, double: Double, float: Float, int: Int, long: Long, short: Short, char: Char)
    * }}}
-   *
-   *
-   * */
+   */
   def loadPrimitivesConfig(
       string: String,
       bool: Boolean,
@@ -111,13 +110,13 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
     //hint double, float and long can be identified by its suffix respectively: d, f, L
   }
 
-  /** The default behavior of ConfigReaders that are derived in PureConfig is to return a KeyNotFound
+  /**
+   * The default behavior of ConfigReaders that are derived in PureConfig is to return a KeyNotFound
    * failure when a required key is missing unless its type is an Option, in which case it is read as a None.
    * {{{
    * case class OptionConfig(optionA: Option[String], optionB: Option[String], optionC: Option[Int])
    * }}}
-   *
-   **/
+   */
   def loadOptionalConfig(
       optionA: Option[String],
       optionB: Option[String],
@@ -131,7 +130,8 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
     optionConfig.optionC shouldBe optionC
   }
 
-  /** Usually, collection types are needed to be defined in configuration files, in which as you may imagine, pureconfig allows to work with them too.
+  /**
+   * Usually, collection types are needed to be defined in configuration files, in which as you may imagine, pureconfig allows to work with them too.
    * The following exercise shows an example for `List, `Set` and `Map[Int, String]` from the `scala.collection` package.
    *
    * For some types, PureConfig cannot automatically derive a reader because there are multiple ways to convert a configuration value to them.
@@ -143,8 +143,7 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
    * set: Set[Int],
    * map: Map[Int, String])
    * }}}
-   *
-   **/
+   */
   def loadCollectionsConfig(list: List[Char], set: Set[Int], map: Map[Int, String]): Unit = {
     import pureconfig.ConvertHelpers._
     implicit val mapReader =
@@ -162,7 +161,8 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
     collectionsConfig.map shouldBe map
   }
 
-  /** When working with dates in configuration, it is also needed to create converters for reading them.
+  /**
+   * When working with dates in configuration, it is also needed to create converters for reading them.
    * For example, `LocalDate` in PureConfig cannot derive a reader because there are multiple
    * `DateTimeFormatters that can be used to convert a string into a `LocalDate.
    * Examples of different formats are `yyyy-mm-dd`, e.g. "2016-01-01"`, and `yyyymmdd`, e.g. `"20160101"`.
@@ -170,7 +170,6 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
    * For those types, PureConfig provides a way to create readers from the necessary parameters. `
    * These methods can be found under the package pureconfig.configurable.
    * Once the output of a `pureconfig.configurable` method for a certain type is in scope, PureConfig can start using that configured reader.
-   *
    *
    * {{{
    * import pureconfig.configurable._
@@ -186,8 +185,7 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
    * localDate: LocalDate,
    * localDateTime: LocalDateTime)
    * }}}
-   *
-   **/
+   */
   def loadTimeConfig(
       month: Int,
       year: Int,
@@ -212,14 +210,14 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
     )
   }
 
-  /** All those duration types within the scala package `scala.concurrent.durations` also can be read in this format from config sources,
+  /**
+   * All those duration types within the scala package `scala.concurrent.durations` also can be read in this format from config sources,
    * in this case with no need of using any converter.
    *
    * {{{
    * case class DurationConfig(duration: Duration, finiteDuration: FiniteDuration)
    * }}}
-   *
-   **/
+   */
   def loadDurationConfig(finiteDuration: FiniteDuration): Unit = {
 
     val configSource = ConfigSource.string(
@@ -233,14 +231,14 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
     timeConfig.finiteDuration shouldBe finiteDuration
   }
 
-  /** Another use case very common when dealing with configurations is to find string paths and urls,
+  /**
+   * Another use case very common when dealing with configurations is to find string paths and urls,
    * in which PureConfig translate them into `java.nio.file.Path`, `java.io.File`, `java.net.URL`, `java.net.URI`.
    *
    * {{{
    * case class PathConfig(path: java.nio.file.Path, file: java.io.File, url: URL, uri: URI)
    * }}}
-   *
-   * */
+   */
   def loadPathsConfig(path: String, file: String, url: String, uri: String): Unit = {
     val configSource = ConfigSource.string(
       "{ " +
@@ -257,7 +255,8 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
     pathConfig.uri shouldBe new URI(uri)
   }
 
-  /** To finish, the following exercise is a combination of all the above use case in the same config source,
+  /**
+   * To finish, the following exercise is a combination of all the above use case in the same config source,
    * being seen as the representation of the application config.
    * As you would notice, only fields for option and collections configuration have been defined in the sours,
    * however, the `ApplicationConf` does have all the sub configurations defined as an option.
@@ -266,14 +265,13 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
    *
    * {{{
    * case class ApplicationConfig(primitivesConf: Option[PrimitivesConf],
-                               optionConfig: Option[OptionConfig],
-                               collectionsConfig: Option[CollectionsConfig],
-                               timeConfig: Option[TimeConfig],
-                               durationConfig: Option[DurationConfig],
-                               pathConfig: Option[PathConfig]
-                              )   * }}}
-   *
-   * */
+   *                               optionConfig: Option[OptionConfig],
+   *                               collectionsConfig: Option[CollectionsConfig],
+   *                               timeConfig: Option[TimeConfig],
+   *                               durationConfig: Option[DurationConfig],
+   *                               pathConfig: Option[PathConfig]
+   *                              )   * }}}
+   */
   def loadApplicationConfig(
       optionA: Option[String],
       optionB: Option[String],

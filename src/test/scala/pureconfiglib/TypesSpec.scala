@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 47 Degrees <https://47deg.com>
+ * Copyright 2020 47 Degrees Open Source <https://www.47deg.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -81,7 +81,10 @@ class TypesSpec extends RefSpec with Checkers {
     check(
       Test.testSuccess(
         SupportedTypes.loadApplicationConfig _,
-        None :: Option("present") :: None :: List[String]() :: Set[String]() :: Map[Int, String]() :: HNil
+        None :: Option("present") :: None :: List[String]() :: Set[String]() :: Map[
+          Int,
+          String
+        ]() :: HNil
       )
     )
   }
