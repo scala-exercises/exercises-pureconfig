@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 47 Degrees <https://47deg.com>
+ * Copyright 2020 47 Degrees Open Source <https://www.47deg.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,11 +26,13 @@ import pureconfig.generic.auto._
 
 import scala.util.Try
 
-/** @param name Load Config
+/**
+ * @param name Load Config
  */
 object LoadingConfig extends AnyFlatSpec with Matchers with Section {
 
-  /** PureConfig is a Scala library for loading configuration files.
+  /**
+   * PureConfig is a Scala library for loading configuration files.
    * It reads Typesafe Config configurations written in HOCON, Java .properties, or JSON to native Scala classes in a boilerplate-free way.
    * Sealed traits, case classes, collections, optional values, and many other types are all supported out-of-the-box.
    * The first thing you have to do is to define the data types and a case class to hold the configuration.
@@ -44,8 +46,7 @@ object LoadingConfig extends AnyFlatSpec with Matchers with Section {
    *
    * A configuration source is commonly defined in the `application.conf`, added as a resource file of your application, usually placed in (`src/main/resources`)
    * But it can also be parsed from string type, as in it has been done in the following examples.
-   *
-   * */
+   */
   def loadOrThrowExample(name: String, number: Int): Unit = {
     val configSource = ConfigSource.string("{ name = first, number = 1 }")
     val example      = configSource.loadOrThrow[Example]
@@ -53,9 +54,10 @@ object LoadingConfig extends AnyFlatSpec with Matchers with Section {
     example.number shouldBe number
   }
 
-  /** As you can have noticed, `loadOrThrowAnother[Example]` is the straight forward method to load configuration,
+  /**
+   * As you can have noticed, `loadOrThrowAnother[Example]` is the straight forward method to load configuration,
    * in which it will throw a `ConfigReaderException[A]` in case there is a any type mismatch or parsing error when loading.
-   * */
+   */
   def loadOrThrowFailure(isFailure: Boolean): Unit = {
     //when
     val configSource = ConfigSource.string("{ name = second, number = this_should_be_an_integer }")
@@ -65,9 +67,10 @@ object LoadingConfig extends AnyFlatSpec with Matchers with Section {
     tryConfig.isFailure shouldBe isFailure
   }
 
-  /** A safer method for loading it would be just `load[Example]`,
+  /**
+   * A safer method for loading it would be just `load[Example]`,
    * in which in this case will return an Monad Either of type `Either[ConfigReaderFailures, A]
-   * */
+   */
   def loadExample(isFirstRigth: Boolean, isSecondRight: Boolean): Unit = {
     //when
     val config1: ConfigReader.Result[Example] =
@@ -81,10 +84,11 @@ object LoadingConfig extends AnyFlatSpec with Matchers with Section {
     config2.isRight shouldBe isSecondRight
   }
 
-  /** A common pattern when loading configs is to read and merge from multiple config sources,
+  /**
+   * A common pattern when loading configs is to read and merge from multiple config sources,
    * maybe you have app-specific and user-specific configs you want to merge in some order,
    * or maybe you want to fall back to some default configuration if a file doesn’t exist or cannot be read.
-   * */
+   */
   def mergeSources(name: String, number: Int): Unit = {
     val primarySource = ConfigSource.string("{ name = easy }")
     val secondarySource =
@@ -94,9 +98,10 @@ object LoadingConfig extends AnyFlatSpec with Matchers with Section {
     example shouldBe Example(name, number)
   }
 
-  /** Sometimes you want some of the sources in your chain to be optional.
+  /**
+   * Sometimes you want some of the sources in your chain to be optional.
    * You can call .optional / alternative source to return a fallBack config if the underlying source cannot be read:
-   * */
+   */
   def optionalConfig(defaultExample: Example): Unit = {
     //when
     val defaultsSource    = ConfigSource.string("{ name = fifth, number = 5 }")
@@ -111,26 +116,26 @@ object LoadingConfig extends AnyFlatSpec with Matchers with Section {
       .loadOrThrow[Example] shouldBe defaultExample
   }
 
-  /** You may want your application config to be loaded from a specific path in the config files,
+  /**
+   * You may want your application config to be loaded from a specific path in the config files,
    * e.g. if you want to have configs for multiple apps (example configurations) in the same sources.
    * ConfigSource instances have an `.at` method you can use to specify where you want the config to be read from:
    *
    * {{{
-    val multiExampleSource = ConfigSource.string("""
-    example-a: {
-        name: a
-        number: 6
-    }
-    example-b: {
-        name: b
-        number: 7
-    }
-    """
-    )
-
-   multiExampleSource.at("example-a").load[Example]
-   * }}}
+   *    val multiExampleSource = ConfigSource.string("""
+   *    example-a: {
+   *        name: a
+   *        number: 6
+   *    }
+   *    example-b: {
+   *        name: b
+   *        number: 7
+   *    }
+   *    """
+   *    )
    *
+   *   multiExampleSource.at("example-a").load[Example]
+   * }}}
    */
   def multipleSources(example: Example): Unit = {
     val exampleB = multiExampleSource.at("example-b").load[Example]
