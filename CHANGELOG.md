@@ -1,5 +1,24 @@
 # Changelog
 
+## [v0.1.5](https://github.com/scala-exercises/exercises-pureconfig/tree/v0.1.5) (2020-06-29)
+
+[Full Changelog](https://github.com/scala-exercises/exercises-pureconfig/compare/v0.1.4...v0.1.5)
+
+📈 **Dependency updates**
+
+- Update sbt to 1.3.13 [\#24](https://github.com/scala-exercises/exercises-pureconfig/pull/24) ([scala-steward](https://github.com/scala-steward))
+- Update pureconfig to 0.13.0 [\#23](https://github.com/scala-exercises/exercises-pureconfig/pull/23) ([scala-steward](https://github.com/scala-steward))
+- Update sbt-mdoc to 2.2.3 [\#22](https://github.com/scala-exercises/exercises-pureconfig/pull/22) ([scala-steward](https://github.com/scala-steward))
+- Update scalacheck-1-14 to 3.2.0.0 [\#21](https://github.com/scala-exercises/exercises-pureconfig/pull/21) ([scala-steward](https://github.com/scala-steward))
+- Update scalatest to 3.2.0 [\#20](https://github.com/scala-exercises/exercises-pureconfig/pull/20) ([scala-steward](https://github.com/scala-steward))
+- Update scalafmt-core to 2.6.1 [\#19](https://github.com/scala-exercises/exercises-pureconfig/pull/19) ([scala-steward](https://github.com/scala-steward))
+- Update sbt-mdoc to 2.2.2 [\#18](https://github.com/scala-exercises/exercises-pureconfig/pull/18) ([scala-steward](https://github.com/scala-steward))
+
+**Merged pull requests:**
+
+- Update definitions, exercise-compiler, ... to 0.6.3 [\#25](https://github.com/scala-exercises/exercises-pureconfig/pull/25) ([scala-steward](https://github.com/scala-steward))
+- Prepare repository for next  release and SBT build improvements [\#17](https://github.com/scala-exercises/exercises-pureconfig/pull/17) ([juanpedromoreno](https://github.com/juanpedromoreno))
+
 ## [v0.1.4](https://github.com/scala-exercises/exercises-pureconfig/tree/v0.1.4) (2020-04-27)
 
 [Full Changelog](https://github.com/scala-exercises/exercises-pureconfig/compare/v0.1.3...v0.1.4)
