@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.1.6](https://github.com/scala-exercises/exercises-pureconfig/tree/v0.1.6) (2020-06-30)
+
+[Full Changelog](https://github.com/scala-exercises/exercises-pureconfig/compare/v0.1.5...v0.1.6)
+
 ## [v0.1.5](https://github.com/scala-exercises/exercises-pureconfig/tree/v0.1.5) (2020-06-29)
 
 [Full Changelog](https://github.com/scala-exercises/exercises-pureconfig/compare/v0.1.4...v0.1.5)
