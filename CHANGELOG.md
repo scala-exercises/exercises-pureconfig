@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.1.8](https://github.com/scala-exercises/exercises-pureconfig/tree/v0.1.8) (2020-08-10)
+
+[Full Changelog](https://github.com/scala-exercises/exercises-pureconfig/compare/v0.1.7...v0.1.8)
+
+📈 **Dependency updates**
+
+- Update definitions, exercise-compiler, ... to 0.6.4 [\#35](https://github.com/scala-exercises/exercises-pureconfig/pull/35) ([47erbot](https://github.com/47erbot))
+
 ## [v0.1.7](https://github.com/scala-exercises/exercises-pureconfig/tree/v0.1.7) (2020-08-10)
 
 [Full Changelog](https://github.com/scala-exercises/exercises-pureconfig/compare/v0.1.6...v0.1.7)
