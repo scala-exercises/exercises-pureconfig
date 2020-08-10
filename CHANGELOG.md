@@ -1,5 +1,19 @@
 # Changelog
 
+## [v0.1.7](https://github.com/scala-exercises/exercises-pureconfig/tree/v0.1.7) (2020-08-10)
+
+[Full Changelog](https://github.com/scala-exercises/exercises-pureconfig/compare/v0.1.6...v0.1.7)
+
+📈 **Dependency updates**
+
+- Update sbt-mdoc to 2.2.4 [\#34](https://github.com/scala-exercises/exercises-pureconfig/pull/34) ([47erbot](https://github.com/47erbot))
+- Update scalacheck-1-14 to 3.2.1.0 [\#33](https://github.com/scala-exercises/exercises-pureconfig/pull/33) ([47erbot](https://github.com/47erbot))
+- Update scalatest to 3.2.1 [\#32](https://github.com/scala-exercises/exercises-pureconfig/pull/32) ([47erbot](https://github.com/47erbot))
+- Update sbt-scalafmt to 2.4.2 [\#31](https://github.com/scala-exercises/exercises-pureconfig/pull/31) ([47erbot](https://github.com/47erbot))
+- Update scalafmt-core to 2.6.4 [\#30](https://github.com/scala-exercises/exercises-pureconfig/pull/30) ([47erbot](https://github.com/47erbot))
+- Update scalafmt-core to 2.6.3 [\#29](https://github.com/scala-exercises/exercises-pureconfig/pull/29) ([scala-steward](https://github.com/scala-steward))
+- Update scalafmt-core to 2.6.2 [\#28](https://github.com/scala-exercises/exercises-pureconfig/pull/28) ([scala-steward](https://github.com/scala-steward))
+
 ## [v0.1.6](https://github.com/scala-exercises/exercises-pureconfig/tree/v0.1.6) (2020-06-30)
 
 [Full Changelog](https://github.com/scala-exercises/exercises-pureconfig/compare/v0.1.5...v0.1.6)
