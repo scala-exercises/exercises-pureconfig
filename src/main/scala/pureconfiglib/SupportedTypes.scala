@@ -43,7 +43,8 @@ import scala.language.postfixOps
 import scala.concurrent.duration._
 
 /**
- * @param name Supported Types
+ * @param name
+ *   Supported Types
  */
 object SupportedTypes extends AnyFlatSpec with Matchers with Section {
 
@@ -51,25 +52,28 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
     ProductHint[T](ConfigFieldMapping(CamelCase, CamelCase))
 
   /**
-   * Before of all, it is important to know that Pureconfig allows you to use different naming conventions for case classes and fields, in which by default,
-   * it expects config kets to be written in kebab case (such as `my-field`) and the associated field names are wiritten in camel case (such as `myField`).
-   * A mapping between different naming conventions is done using a ConfigFieldMapping object, with which one can construct a ProductHint.
-   * - `CamelCase` (examples: `camelCase`, `useMorePureconfig`)
-   * - `SnakeCase` (examples: `snake_case`, `use_more_pureconfig`)
-   * - `KebabCase` (examples: `kebab-case`, `use-more-pureconfig`)
-   * - `PascalCase`: (examples: `PascalCase`, `UseMorePureconfig`)
+   * Before of all, it is important to know that Pureconfig allows you to use different naming
+   * conventions for case classes and fields, in which by default, it expects config kets to be
+   * written in kebab case (such as `my-field`) and the associated field names are wiritten in camel
+   * case (such as `myField`). A mapping between different naming conventions is done using a
+   * ConfigFieldMapping object, with which one can construct a ProductHint.
+   *   - `CamelCase` (examples: `camelCase`, `useMorePureconfig`)
+   *   - `SnakeCase` (examples: `snake_case`, `use_more_pureconfig`)
+   *   - `KebabCase` (examples: `kebab-case`, `use-more-pureconfig`)
+   *   - `PascalCase`: (examples: `PascalCase`, `UseMorePureconfig`)
    *
    * These exercises are using the `CamelCase` field mapping hint as:
    * {{{
    * implicit def hint[T] = ProductHint[T](ConfigFieldMapping(CamelCase, CamelCase))
    * }}}
    *
-   * PureConfig also comes with baked-in support for many types, most of them from the standard Java and Scala libraries.
-   * In this section we will see an very complete overview of examples with most of the types that pureconfig supports.
-   * Each exercise has a `case class` that wraps the values loaded from the configuration source on it.
+   * PureConfig also comes with baked-in support for many types, most of them from the standard Java
+   * and Scala libraries. In this section we will see an very complete overview of examples with
+   * most of the types that pureconfig supports. Each exercise has a `case class` that wraps the
+   * values loaded from the configuration source on it.
    *
-   * Let's then start with the more basic types, the primitive ones:
-   * String, `Boolean`, `Double`, `Float`, `Int`, `Long`, `Short`, `Char`.
+   * Let's then start with the more basic types, the primitive ones: String, `Boolean`, `Double`,
+   * `Float`, `Int`, `Long`, `Short`, `Char`.
    *
    * In which the wrapper configuration case class in this case is called ´PrimitivesConf´.
    * {{{
@@ -112,7 +116,8 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
 
   /**
    * The default behavior of ConfigReaders that are derived in PureConfig is to return a KeyNotFound
-   * failure when a required key is missing unless its type is an Option, in which case it is read as a None.
+   * failure when a required key is missing unless its type is an Option, in which case it is read
+   * as a None.
    * {{{
    * case class OptionConfig(optionA: Option[String], optionB: Option[String], optionC: Option[Int])
    * }}}
@@ -131,11 +136,14 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
   }
 
   /**
-   * Usually, collection types are needed to be defined in configuration files, in which as you may imagine, pureconfig allows to work with them too.
-   * The following exercise shows an example for `List, `Set` and `Map[Int, String]` from the `scala.collection` package.
+   * Usually, collection types are needed to be defined in configuration files, in which as you may
+   * imagine, pureconfig allows to work with them too. The following exercise shows an example for
+   * `List, `Set` and `Map[Int, String]` from the `scala.collection` package.
    *
-   * For some types, PureConfig cannot automatically derive a reader because there are multiple ways to convert a configuration value to them.
-   * For instance, reading maps with non-string keys, unless a way to convert the keys to and from strings is provided, PureConfig won’t be able to derive a reader.
+   * For some types, PureConfig cannot automatically derive a reader because there are multiple ways
+   * to convert a configuration value to them. For instance, reading maps with non-string keys,
+   * unless a way to convert the keys to and from strings is provided, PureConfig won’t be able to
+   * derive a reader.
    *
    * {{{
    * case class CollectionsConfig(
@@ -162,14 +170,15 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
   }
 
   /**
-   * When working with dates in configuration, it is also needed to create converters for reading them.
-   * For example, `LocalDate` in PureConfig cannot derive a reader because there are multiple
-   * `DateTimeFormatters that can be used to convert a string into a `LocalDate.
-   * Examples of different formats are `yyyy-mm-dd`, e.g. "2016-01-01"`, and `yyyymmdd`, e.g. `"20160101"`.
+   * When working with dates in configuration, it is also needed to create converters for reading
+   * them. For example, `LocalDate` in PureConfig cannot derive a reader because there are multiple
+   * `DateTimeFormatters that can be used to convert a string into a `LocalDate. Examples of
+   * different formats are `yyyy-mm-dd`, e.g. "2016-01-01"`, and `yyyymmdd`, e.g. `"20160101"`.
    *
    * For those types, PureConfig provides a way to create readers from the necessary parameters. `
-   * These methods can be found under the package pureconfig.configurable.
-   * Once the output of a `pureconfig.configurable` method for a certain type is in scope, PureConfig can start using that configured reader.
+   * These methods can be found under the package pureconfig.configurable. Once the output of a
+   * `pureconfig.configurable` method for a certain type is in scope, PureConfig can start using
+   * that configured reader.
    *
    * {{{
    * import pureconfig.configurable._
@@ -211,8 +220,8 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
   }
 
   /**
-   * All those duration types within the scala package `scala.concurrent.durations` also can be read in this format from config sources,
-   * in this case with no need of using any converter.
+   * All those duration types within the scala package `scala.concurrent.durations` also can be read
+   * in this format from config sources, in this case with no need of using any converter.
    *
    * {{{
    * case class DurationConfig(duration: Duration, finiteDuration: FiniteDuration)
@@ -233,7 +242,8 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
 
   /**
    * Another use case very common when dealing with configurations is to find string paths and urls,
-   * in which PureConfig translate them into `java.nio.file.Path`, `java.io.File`, `java.net.URL`, `java.net.URI`.
+   * in which PureConfig translate them into `java.nio.file.Path`, `java.io.File`, `java.net.URL`,
+   * `java.net.URI`.
    *
    * {{{
    * case class PathConfig(path: java.nio.file.Path, file: java.io.File, url: URL, uri: URI)
@@ -256,11 +266,11 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
   }
 
   /**
-   * To finish, the following exercise is a combination of all the above use case in the same config source,
-   * being seen as the representation of the application config.
-   * As you would notice, only fields for option and collections configuration have been defined in the sours,
-   * however, the `ApplicationConf` does have all the sub configurations defined as an option.
-   * Also in this case the converters for `Map` and `java.time._` types are needed even if they are not present in the
+   * To finish, the following exercise is a combination of all the above use case in the same config
+   * source, being seen as the representation of the application config. As you would notice, only
+   * fields for option and collections configuration have been defined in the sours, however, the
+   * `ApplicationConf` does have all the sub configurations defined as an option. Also in this case
+   * the converters for `Map` and `java.time._` types are needed even if they are not present in the
    * config source, but because they were declared in the `case class`.
    *
    * {{{
@@ -270,7 +280,8 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
    *                               timeConfig: Option[TimeConfig],
    *                               durationConfig: Option[DurationConfig],
    *                               pathConfig: Option[PathConfig]
-   *                              )   * }}}
+   *                               )   *
+   * }}}
    */
   def loadApplicationConfig(
       optionA: Option[String],
@@ -289,10 +300,10 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
     )
     implicit val mapReader =
       genericMapReader[Int, String](catchReadError(_.toInt))
-    implicit val localDateConvert           = localDateConfigConvert(DateTimeFormatter.ISO_DATE)
-    implicit val localDateTimeConvert       = localDateTimeConfigConvert(DateTimeFormatter.ISO_DATE_TIME)
-    val pathConfig: ApplicationConfig       = configSource.loadOrThrow[ApplicationConfig]
-    val optionConfig: OptionConfig          = pathConfig.optionConfig.get
+    implicit val localDateConvert     = localDateConfigConvert(DateTimeFormatter.ISO_DATE)
+    implicit val localDateTimeConvert = localDateTimeConfigConvert(DateTimeFormatter.ISO_DATE_TIME)
+    val pathConfig: ApplicationConfig = configSource.loadOrThrow[ApplicationConfig]
+    val optionConfig: OptionConfig    = pathConfig.optionConfig.get
     val collectionConfig: CollectionsConfig = pathConfig.collectionsConfig.get
 
     pathConfig.primitivesConf.isDefined shouldBe false

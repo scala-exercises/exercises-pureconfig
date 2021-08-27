@@ -21,7 +21,8 @@ import org.scalaexercises.definitions._
 /**
  * A boilerplate-free library for loading configuration files.
  *
- * @param name pureconfig
+ * @param name
+ *   pureconfig
  */
 object PureConfigLibrary extends Library {
   override def owner      = "scala-exercises"
