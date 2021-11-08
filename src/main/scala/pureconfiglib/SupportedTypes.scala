@@ -111,7 +111,7 @@ object SupportedTypes extends AnyFlatSpec with Matchers with Section {
     primitivesConfig.long shouldBe long
     primitivesConfig.short shouldBe short
     primitivesConfig.char shouldBe char
-    //hint double, float and long can be identified by its suffix respectively: d, f, L
+    // hint double, float and long can be identified by its suffix respectively: d, f, L
   }
 
   /**

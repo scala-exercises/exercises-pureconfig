@@ -63,11 +63,11 @@ object LoadingConfig extends AnyFlatSpec with Matchers with Section {
    * mismatch or parsing error when loading.
    */
   def loadOrThrowFailure(isFailure: Boolean): Unit = {
-    //when
+    // when
     val configSource = ConfigSource.string("{ name = second, number = this_should_be_an_integer }")
     val tryConfig    = Try(configSource.loadOrThrow[Example])
 
-    //then
+    // then
     tryConfig.isFailure shouldBe isFailure
   }
 
@@ -76,14 +76,14 @@ object LoadingConfig extends AnyFlatSpec with Matchers with Section {
    * an Monad Either of type `Either[ConfigReaderFailures, A]
    */
   def loadExample(isFirstRigth: Boolean, isSecondRight: Boolean): Unit = {
-    //when
+    // when
     val config1: ConfigReader.Result[Example] =
       ConfigSource.string("{ name = third, number = 3 }").load[Example]
     val config2 = ConfigSource
       .string("{ name = third, number = this_should_be_an_integer }")
       .load[Example]
 
-    //then
+    // then
     config1.isRight shouldBe isFirstRigth
     config2.isRight shouldBe isSecondRight
   }
@@ -107,11 +107,11 @@ object LoadingConfig extends AnyFlatSpec with Matchers with Section {
    * alternative source to return a fallBack config if the underlying source cannot be read:
    */
   def optionalConfig(defaultExample: Example): Unit = {
-    //when
+    // when
     val defaultsSource    = ConfigSource.string("{ name = fifth, number = 5 }")
     val nonExistingSource = ConfigSource.file("non-existing-file.conf")
 
-    //then
+    // then
     nonExistingSource.optional
       .withFallback(defaultsSource)
       .load[Example] shouldBe Right(defaultExample)
