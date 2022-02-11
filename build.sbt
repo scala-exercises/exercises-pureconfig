@@ -16,8 +16,8 @@ lazy val exercises = (project in file("."))
   .settings(name := "exercises-pureconfig")
   .settings(
     libraryDependencies ++= Seq(
-      "org.scala-exercises"        %% "exercise-compiler"         % "0.6.7",
-      "org.scala-exercises"        %% "definitions"               % "0.6.7",
+      "org.scala-exercises"        %% "exercise-compiler"         % "0.7.1",
+      "org.scala-exercises"        %% "definitions"               % "0.7.1",
       "com.github.pureconfig"      %% "pureconfig"                % "0.17.1",
       "com.chuusai"                %% "shapeless"                 % "2.3.7",
       "org.scalatest"              %% "scalatest"                 % "3.2.10",
