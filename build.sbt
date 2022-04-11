@@ -21,7 +21,7 @@ lazy val exercises = (project in file("."))
       "com.github.pureconfig"      %% "pureconfig"                % "0.17.1",
       "com.chuusai"                %% "shapeless"                 % "2.3.8",
       "org.scalatest"              %% "scalatest"                 % "3.2.10",
-      "org.scalacheck"             %% "scalacheck"                % "1.15.4",
+      "org.scalacheck"             %% "scalacheck"                % "1.16.0",
       "org.scalatestplus"          %% "scalacheck-1-14"           % "3.2.2.0",
       "com.github.alexarchambault" %% "scalacheck-shapeless_1.15" % "1.3.0"
     )
